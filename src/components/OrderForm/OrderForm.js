@@ -36,20 +36,21 @@ function OrderForm({ burritoData }) {
     setName(e.target.value);
   };
 
-  const handleIngredientClick = (ingredient) => {
-    console.log(ingredient, "ingredient selected");
-    setIngredients((prevSelectedIngredients) => [
-      ...prevSelectedIngredients,
-      ingredient,
-    ]);
+  const handleIngredientClick = (ingredient, e) => {
+    // e.preventDefault()
+    console.log(ingredient, "ingredient selected")
+    setIngredients((prevSelectedIngredients) => [...prevSelectedIngredients, ingredient]);
   };
+  
+  console.log(ingredients)
 
   const ingredientButtons = ingredientOptions.map((ingredient) => {
     return (
       <button
         key={ingredient}
         name={ingredient}
-        onClick={() => handleIngredientClick(ingredient)}
+        type="button"
+        onClick={(e) => handleIngredientClick(ingredient, e)}
       >
         {ingredient}
       </button>

@@ -10,6 +10,7 @@ function App() {
   useEffect(() => {
     getOrders()
       .then(data => {
+        console.log(data)
         setBurritoData(data)
       })
 
@@ -22,7 +23,7 @@ function App() {
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm burritoData={burritoData}/>
+        <OrderForm />
       </header>
 
         <Orders burritoData={burritoData} />

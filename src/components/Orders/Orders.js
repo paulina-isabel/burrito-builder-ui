@@ -4,7 +4,7 @@ import "./Orders.css";
 const Orders = ({ burritoData }) => {
   console.log(burritoData, 'what')
 
-  const burritoOrders = burritoData
+  const burritoOrders = burritoData.orders
     ? burritoData.orders.map((order) => (
         <div className="order" key={order.name}>
           <h3>{order.name}</h3>
