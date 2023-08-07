@@ -10,13 +10,8 @@ function App() {
   useEffect(() => {
     getOrders()
       .then(data => {
-        console.log(data)
         setBurritoData(data)
       })
-
-      console.log(burritoData, 'burrito data :)')
-
-    // .catch((err) => console.error("Error fetching:", err));
   }, []);
 
   const addOrder = (newOrder) => {
