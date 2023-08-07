@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { postOrders } from "../../apiCalls";
 
-function OrderForm() {
+function OrderForm({ addOrder }) {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
-// if things are empty don't submit
     if (!name || !ingredients) {
       console.log('plz complete the form')
     } else {
@@ -19,12 +18,9 @@ function OrderForm() {
       postOrders(orderData)
         .then(dataResult => {
           console.log(dataResult, 'data result is here')
+          addOrder(dataResult)
         })
     }
-
-    console.log("Order Submitted:");
-    console.log("Name:", name);
-    console.log("Ingredients:", ingredients);
     clearInputs();
   }
 

@@ -19,11 +19,15 @@ function App() {
     // .catch((err) => console.error("Error fetching:", err));
   }, []);
 
+  const addOrder = (newOrder) => {
+    setBurritoData([...burritoData, newOrder])
+  }
+
   return (
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm addOrder={addOrder}/>
       </header>
 
         <Orders burritoData={burritoData} />
