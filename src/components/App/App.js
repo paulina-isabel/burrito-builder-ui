@@ -12,7 +12,9 @@ function App() {
       .then(data => {
         setBurritoData(data)
       })
+
       console.log(burritoData, 'burrito data :)')
+
     // .catch((err) => console.error("Error fetching:", err));
   }, []);
 
@@ -20,10 +22,10 @@ function App() {
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm burritoData={burritoData}/>
       </header>
 
-      <Orders burritoData={burritoData} />
+        <Orders burritoData={burritoData} />
     </main>
   );
 }

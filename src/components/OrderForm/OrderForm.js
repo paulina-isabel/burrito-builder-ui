@@ -1,62 +1,78 @@
 import { useState } from "react";
 
-function OrderForm(props) {
-  // const [name, setName] = useState("");
-  // const [ingredients, setIngredients] = useState([]);
+function OrderForm({ burritoData }) {
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState([]);
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   clearInputs();
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("Order Submitted:");
+    console.log("Name:", name);
+    console.log("Ingredients:", ingredients);
+    clearInputs();
+  }
 
-  // function clearInputs() {
-  //   setName("");
-  //   setIngredients([]);
-  // };
+  function clearInputs() {
+    setName("");
+    setIngredients([]);
+  }
 
-  // const possibleIngredients = [
-  //   "beans",
-  //   "steak",
-  //   "carnitas",
-  //   "sofritas",
-  //   "lettuce",
-  //   "queso fresco",
-  //   "pico de gallo",
-  //   "hot sauce",
-  //   "guacamole",
-  //   "jalapenos",
-  //   "cilantro",
-  //   "sour cream",
-  // ];
-  // const ingredientButtons = possibleIngredients.map((ingredient) => {
-  //   return (
-  //     <button
-  //       key={ingredient}
-  //       name={ingredient}
-  //       // onClick={(e) => }
-  //     >
-  //       {ingredient}
-  //     </button>
-  //   );
-  // });
+  const ingredientOptions = [
+    "beans",
+    "steak",
+    "carnitas",
+    "sofritas",
+    "lettuce",
+    "queso fresco",
+    "pico de gallo",
+    "hot sauce",
+    "guacamole",
+    "jalapenos",
+    "cilantro",
+    "sour cream",
+  ];
 
-  // return (
-  //   <form>
-  //     <input
-  //       type="text"
-  //       placeholder="Name"
-  //       name="name"
-  //       value={name}
-  //       // onChange={(e) => }
-  //     />
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
 
-  //     {ingredientButtons}
+  const handleIngredientClick = (ingredient) => {
+    console.log(ingredient, "ingredient selected");
+    setIngredients((prevSelectedIngredients) => [
+      ...prevSelectedIngredients,
+      ingredient,
+    ]);
+  };
 
-  //     <p>Order: {ingredients.join(", ") || "Nothing selected"}</p>
+  const ingredientButtons = ingredientOptions.map((ingredient) => {
+    return (
+      <button
+        key={ingredient}
+        name={ingredient}
+        onClick={() => handleIngredientClick(ingredient)}
+      >
+        {ingredient}
+      </button>
+    );
+  });
 
-  //     <button onClick={(e) => handleSubmit(e)}>Submit Order</button>
-  //   </form>
-  // );
+  return (
+    <form>
+      <input
+        type="text"
+        placeholder="Name"
+        name="name"
+        value={name}
+        onChange={handleNameChange}
+      />
+
+      {ingredientButtons}
+
+      <p>Order: {ingredients.join(", ") || "Nothing selected"}</p>
+
+      <button onClick={(e) => handleSubmit(e)}>Submit Order</button>
+    </form>
+  );
 }
 
 export default OrderForm;
