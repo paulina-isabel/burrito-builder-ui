@@ -6,7 +6,7 @@ const Orders = ({ burritoData }) => {
 
   const burritoOrders = burritoData.orders
     ? burritoData.orders.map((order) => (
-        <div className="order" key={order.name}>
+        <div className="order" name='order' key={order.name}>
           <h3>{order.name}</h3>
           <ul className="ingredient-list">
             {order.ingredients.map((ingredient, index) => (
