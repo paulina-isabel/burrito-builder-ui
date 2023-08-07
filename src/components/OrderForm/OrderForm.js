@@ -1,11 +1,27 @@
 import { useState } from "react";
+import { postOrders } from "../../apiCalls";
 
-function OrderForm({ burritoData }) {
+function OrderForm() {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
+// if things are empty don't submit
+    if (!name || !ingredients) {
+      console.log('plz complete the form')
+    } else {
+      const orderData = {
+        id: Date.now(),
+        name: name,
+        ingredients: ingredients
+      };
+      postOrders(orderData)
+        .then(dataResult => {
+          console.log(dataResult, 'data result is here')
+        })
+    }
+
     console.log("Order Submitted:");
     console.log("Name:", name);
     console.log("Ingredients:", ingredients);
@@ -37,7 +53,6 @@ function OrderForm({ burritoData }) {
   };
 
   const handleIngredientClick = (ingredient, e) => {
-    // e.preventDefault()
     console.log(ingredient, "ingredient selected")
     setIngredients((prevSelectedIngredients) => [...prevSelectedIngredients, ingredient]);
   };
