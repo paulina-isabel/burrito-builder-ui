@@ -23,7 +23,7 @@ function App() {
         <OrderForm />
       </header>
 
-      <Orders orders={"Here is where orders go"} />
+      <Orders burritoData={burritoData} />
     </main>
   );
 }
