@@ -17,7 +17,6 @@ function OrderForm({ addOrder }) {
       };
       postOrders(orderData)
         .then(dataResult => {
-          console.log(dataResult, 'data result is here')
           addOrder(dataResult)
         })
     }
